@@ -5,7 +5,7 @@ To respect confidentiality and GDPR requirements, **all data used in these proje
 
 The goal of this portfolio is to demonstrate:
 
-- My ability to work with **Python, pandas, SQL, Power BI, and Looker Studio**
+- My ability to work with **Python, SQL, Power BI, and Looker Studio**
 - My strength in building **data pipelines, cleaning datasets, and creating actionable insights**
 - My understanding of **e-commerce operations**, including pricing, inventory, forecasting, profitability analysis, and customer behaviour
 - My analytical thinking and business decision-making skills
