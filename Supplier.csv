@@ -1,0 +1,6 @@
+supplier_id,supplier_country,lead_time_days
+SUP_A,Germany,16
+SUP_B,Czech Republic,33
+SUP_C,Italy,31
+SUP_D,Poland,21
+SUP_E,Turkey,45
