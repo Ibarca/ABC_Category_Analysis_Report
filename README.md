@@ -1,123 +1,109 @@
-# 📦 Data Analytics with SQL Portfolio (with Synthetic E-Commerce Data)
+# 📊 Category Management Analytics Foundation (BigQuery + Google Sheets)
 
-This repository showcases a collection of **data analysis projects inspired by real-world e-commerce challenges** that I led or contributed to professionally.  
-To respect confidentiality and GDPR requirements, **all data used in these projects is fully synthetic**, but the **logic, methods, and business reasoning reflect real scenarios** from my work in category management, private-label management, and commercial analytics.
+## Overview
+This project showcases a **production-ready analytical dataset** built with **BigQuery SQL** and **integrated with Google Sheets** to enable automated, scalable reporting for Category Management teams.
 
-The goal of this portfolio is to demonstrate:
-
-- My ability to work with **Python, SQL, Power BI, and Looker Studio**
-- My strength in building **data pipelines, cleaning datasets, and creating actionable insights**
-- My understanding of **e-commerce operations**, including pricing, inventory, forecasting, profitability analysis, and customer behaviour
-- My analytical thinking and business decision-making skills
+The dataset consolidates multiple operational sources into a **single source of truth at SKU level**, designed to support prioritization, performance monitoring, and optimization decisions.
 
 ---
 
-## 📊 Project Overview
+## BI / Data Analyst Perspective
+From a Business Intelligence standpoint, this project focuses on:
 
-Below is a summary of the types of projects included in this repository.  
-Each project folder contains:
+- Data modeling at SKU granularity  
+- Metric standardization across teams  
+- SQL window functions for cumulative analytics (ABC classification)  
+- Automation and self-service analytics via Google Sheets  
+- Reducing dependency on ad-hoc analysis and manual reporting  
 
-✔ A synthetic dataset  
-✔ A Jupyter notebook or script with full analysis  
-✔ A business explanation of the problem  
-✔ Insights & results  
-✔ Visualizations when relevant  
-
-### **1. Demand Forecasting for a Private-Label Category**
-- Forecast monthly sales using historical synthetic data  
-- Calculate safety stock, reorder points, and stock coverage  
-- Evaluate supplier lead times and MOQ constraints  
-- Tools: Python (pandas), seaborn/matplotlib, Excel  
-
-### **2. Contribution Margin Optimization (CM1/CM2)**
-- Analyse profitability by SKU  
-- Identify unprofitable products  
-- Model impact of price changes and supplier negotiations  
-- Tools: Python, SQL  
-
-### **3. Inventory Health Dashboard**
-- ABC analysis of SKUs  
-- Dead stock identification  
-- Aging reports and stock risks  
-- Tools: Looker Studio, Python, Excel  
-
-### **4. Pricing Elasticity for an E-commerce Assortment**
-- Simulate price changes and revenue impact  
-- Build elasticity coefficients using synthetic customer behaviour  
-- Tools: Python, visualization  
-
-### **5. Supplier Performance Analytics**
-- Analyse OTIF, lead time variance, MOQ impact  
-- Model scenarios for Q1/Q2 buying cycles  
-- Tools: Excel / Python  
+This dataset is intended as a **first analytical layer**, enabling fast exploration and decision-making before deeper analysis in specialized dashboards.
 
 ---
 
-## 🎯 Objectives of this Portfolio
-
-This repository was built to:
-
-- Demonstrate my **hands-on skills in data analytics** applied to real e-commerce environments  
-- Provide **transparent, reproducible analytics workflows** using Python and SQL  
-- Showcase **business thinking**, not only technical execution  
-- Present the types of analyses I regularly performed in Category Management / Private-Label roles  
-
----
-
-## 🧰 Tech Stack
-
-**Languages & Tools**
-- Python (pandas, numpy, matplotlib)
-- SQL
-- Excel / Google Sheets
-- Power BI / Looker Studio
-- Jupyter Notebook
-
-**Business Domains**
-- Category management  
-- Pricing and margins  
-- Inventory management  
-- Supplier management  
-- Forecasting  
-- E-commerce performance analytics  
+## Key Metrics
+- Revenue & units sold (last 365 days)
+- ABC classification (cumulative revenue logic)
+- Revenue contribution per SKU
+- Average selling price
+- CM1 / CM2 / CM3 margins
+- Service level (stock availability over time)
+- Current stock on hand
+- Supplier, country & lead time
 
 ---
 
-## 📁 Repository Structure
-
-.
-├── forecasting/
-│   ├── dataset_synthetic.csv
-│   ├── forecasting_notebook.ipynb
-│   └── README.md
-├── profitability/
-├── inventory_health/
-├── pricing/
-└── supplier_performance/
-
-Each folder contains:
-- Synthetic dataset  
-- Notebook/script  
-- Explanation of the business case  
-- Results  
+## Automation & Delivery
+- Query runs in **BigQuery**
+- Connected directly to **Google Sheets**
+- Automatic refresh
+- End users work with filters, pivots, and conditional logic
+- No manual data extraction required
 
 ---
 
-## 🔒 About the Data
+## Real-World Usage
+I implemented this structure (adapted to each data model) in **two different e-commerce companies**, where it became:
 
-All datasets used here are:
-
-- **100% synthetic**
-- Created to mirror realistic patterns from e-commerce operations  
-- Safe to share and compliant with confidentiality rules  
-
-No proprietary, internal, or customer data from any employer is included.  
+- The **core dataset** for Category Management
+- The entry point for weekly business reviews
+- A foundation that **significantly improved data accessibility and transparency**
+- A bridge between analytics and business users
 
 ---
+
+## Scalability
+The model is intentionally flexible and can be extended with additional KPIs such as:
+- Funnel metrics (views, add-to-cart, conversion)
+- Return rates
+- Delivery performance
+- Forecast accuracy
+- Supplier reliability
+
+---
+
+## Data Flow Diagram
+
+┌────────────────────┐
+│  Operational Data  │
+│────────────────────│
+│ Products           │
+│ Sales History      │
+│ Inventory History  │
+│ Margins            │
+│ Suppliers          │
+└─────────┬──────────┘
+          │
+          ▼
+┌────────────────────┐
+│   BigQuery SQL     │
+│────────────────────│
+│ - Data Modeling    │
+│ - Joins & Metrics  │
+│ - Window Functions │
+│ - ABC Logic        │
+└─────────┬──────────┘
+          │
+          ▼
+┌────────────────────┐
+│ Google Sheets      │
+│────────────────────│
+│ - Automated Refresh│
+│ - Filters & Pivots │
+│ - Priority Views   │
+└─────────┬──────────┘
+          │
+          ▼
+┌────────────────────┐
+│ Business Users     │
+│────────────────────│
+│ Category Managers  │
+│ Ops & Supply Chain │
+│ Management         │
+└────────────────────┘
 
 ## 📬 Contact
 
 If you want to discuss my work, analytics methods, or e-commerce projects:
 
-- **LinkedIn:** https://www.linkedin.com/in/YOUR-LINKEDIN  
-- **Email:** your.email@example.com  
+- **LinkedIn:** [https://www.linkedin.com/in/yago-b-35582644/]
+- **Email:** ibarreirocanda@gmail.com 
