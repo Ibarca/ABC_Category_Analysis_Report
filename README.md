@@ -19,6 +19,8 @@ The goal of this project is to give Category Managers one central place to:
 -Identify optimization opportunities across assortment, pricing, and stock
 -Monitor performance consistently across the full catalog
 
+<img width="1357" height="770" alt="Screenshot 2026-01-05 at 13 53 02" src="https://github.com/user-attachments/assets/7428057c-f74b-4ded-a1f7-951f7ef252d9" />
+
 ---
 
 ## Business Purpose
