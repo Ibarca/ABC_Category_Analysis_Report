@@ -1,0 +1,116 @@
+WITH product AS (
+  -- SKU master data + supplier attributes
+  SELECT
+    pd.sku_id AS sku,
+    pd.listed_date,
+    pd.category,
+    pd.supplier_id AS supplier,
+    s.lead_time_days,
+    s.supplier_country
+  FROM `Project_01.Product_data` pd
+  LEFT JOIN `Project_01.Supplier` s
+    ON pd.supplier_id = s.supplier_id
+),
+
+profit AS (
+  -- Price + margins per SKU
+  SELECT
+    sku_id AS sku,
+    avg_selling_price,
+    ROUND(cm1_margin_pct / 100, 2) AS cm1,
+    ROUND(cm2_margin_pct / 100, 2) AS cm2,
+    ROUND(cm3_margin_pct / 100, 2) AS cm3
+  FROM `Project_01.Margins`
+),
+
+sales_365 AS (
+  -- Units sold over last 365 days (based on your fixed date filter)
+  SELECT
+    sku_id AS sku,
+    SUM(units_sold) AS units_365
+  FROM `Project_01.Sales_history`
+  WHERE date > '2023-12-31'
+  GROUP BY sku_id
+),
+
+sku_perf AS (
+  -- Single place to compute sales + revenue per SKU
+  SELECT
+    s.sku,
+    s.units_365 AS sales_365,
+    ROUND(s.units_365 * p.avg_selling_price, 2) AS revenue_365
+  FROM sales_365 s
+  LEFT JOIN profit p
+    ON p.sku = s.sku
+),
+
+abc AS (
+  -- Total + cumulative revenue for Pareto / ABC classification
+  SELECT
+    sku,
+    sales_365,
+    revenue_365,
+    SUM(revenue_365) OVER () AS total_revenue_365,
+    SUM(revenue_365) OVER (
+      ORDER BY revenue_365 DESC
+      ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+    ) AS cu_revenue
+  FROM sku_perf
+),
+
+stockouts AS (
+  -- Service level = % days in stock over the period
+  SELECT
+    sku_id AS sku,
+    ROUND(
+      (365 - SUM(CASE WHEN stock_on_hand > 0 THEN 0 ELSE 1 END)) * 100 / 365,
+      2
+    ) AS service_level
+  FROM `Project_01.Inventory_history`
+  WHERE date > '2023-12-31' --  For this project I am not using dynamic data, otherwise I would have used 'DATE > CURRENT_DATE() -365'  
+  GROUP BY sku_id
+),
+
+current_stock AS (
+  -- Stock snapshot on reference date
+  SELECT
+    sku_id AS sku,
+    stock_on_hand
+  FROM `Project_01.Inventory_history`
+  WHERE date = '2024-12-31' -- For this project I am not using dynamic data, otherwise I would have used 'DATE = CURRENT_DATE() -1'
+)
+
+SELECT
+  pr.sku,
+  pr.category,
+  pr.listed_date AS listed_year,
+  abc.revenue_365,
+  abc.sales_365,
+  pr.supplier,
+  pr.supplier_country,
+  stockouts.service_level,
+  current_stock.stock_on_hand,
+
+  ROUND(SAFE_DIVIDE(current_stock.stock_on_hand * 365, abc.sales_365), 2) AS reach_days,
+  pr.lead_time_days AS leadtime_days,
+
+  profit.avg_selling_price,
+  profit.cm1,
+  profit.cm2,
+  profit.cm3,
+
+  ROUND(SAFE_DIVIDE(abc.cu_revenue, abc.total_revenue_365), 2) AS contribution_revenue,
+
+  CASE
+    WHEN abc.cu_revenue < 0.4 * abc.total_revenue_365 THEN 'A'
+    WHEN abc.cu_revenue < 0.8 * abc.total_revenue_365 THEN 'B'
+    ELSE 'C'
+  END AS class
+
+FROM product pr
+LEFT JOIN profit        ON profit.sku = pr.sku
+LEFT JOIN abc           ON abc.sku = pr.sku
+LEFT JOIN stockouts     ON stockouts.sku = pr.sku
+LEFT JOIN current_stock ON current_stock.sku = pr.sku
+
+ORDER BY abc.revenue_365 DESC;
