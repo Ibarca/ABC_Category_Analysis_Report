@@ -104,6 +104,8 @@ Building SKU-level KPIs such as rolling 365-day sales, cumulative revenue contri
 Running these calculations entirely in BigQuery SQL ensures that heavy data processing happens at the database level, which guarantees high scalability and performance.
 As a result, the connected Google Sheets report remains fast and responsive, even when working with thousands of SKUs and live data refreshes, making it suitable for daily operational use.
 
+<img width="502" height="400" alt="Screenshot 2026-01-05 at 14 19 35" src="https://github.com/user-attachments/assets/007fccfc-3322-47de-9ab5-a8113a9a0a99" />
+
 ---
 
 ## 📬 Contact
