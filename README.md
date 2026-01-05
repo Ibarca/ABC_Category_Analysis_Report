@@ -80,9 +80,11 @@ All data is unified at **SKU level**.
 I implemented this structure (adapted to each data model) in **two different e-commerce companies**, where it became:
 
 - The **core dataset** for Category Management
-- The entry point for weekly business reviews
+- The entry point for weekly business reviews when KPIs adjusted to quicker time horizons
 - A foundation that **significantly improved data accessibility and transparency**
 - A bridge between analytics and business users
+- A guidance to project priorization following revenue concentration
+<img width="583" height="145" alt="Screenshot 2026-01-05 at 18 51 14" src="https://github.com/user-attachments/assets/2b55d18d-a0e2-4317-ae31-8e29458b2977" />
 
 ---
 
@@ -109,6 +111,17 @@ As a result, the connected Google Sheets report remains fast and responsive, eve
 
 ---
 
+## Recomendations
+
+- AI-assisted reporting with Google Gemini.
+  
+Corporate Google Workspace accounts allow the integration of Google Gemini directly into Google Sheets. This enables automated prompting and natural-language queries on top of the report, allowing users to quickly generate tracking summaries, ad-hoc insights, and management-ready reports without additional manual analysis.
+
+- Complement ABC analysis with trend-focused dashboards.
+
+ABC analysis provides a strong snapshot of current performance and prioritization, but it does not capture trends, seasonality, or momentum over time. For decision-making that requires forward-looking insights, this report should be supplemented with in-depth dashboards (e.g. time-series analysis, demand evolution, stock risk trends, or forecast accuracy monitoring).
+
+---
 ## 📬 Contact
 
 If you want to discuss my work, analytics methods, or e-commerce projects:
