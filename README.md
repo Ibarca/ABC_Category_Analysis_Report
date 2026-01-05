@@ -1,17 +1,23 @@
 # ABC Report for Category Management (SQL + BigQuery + Google Sheets) with syntetic data
 
 ## Overview 
-This project showcases a **production-ready analytical dataset** built with **BigQuery SQL** and **integrated with Google Sheets** to enable automated, scalable reporting for Category Management teams using syntetic data.
+This project showcases a production-ready analytical dataset built entirely with BigQuery SQL and integrated with Google Sheets to enable automated, scalable reporting for Category Management teams, using synthetic data.
 
-The dataset consolidates multiple operational sources into a **single source of truth at SKU level**, designed to support prioritization, performance monitoring, and optimization decisions.
-This project provides a **single, consolidated dataset** designed to support **Category Management decision-making** in e-commerce environments.
+The dataset consolidates multiple operational sources into a single source of truth at SKU level, designed to support prioritization, performance monitoring, and optimization decisions in e-commerce environments. SKU prioritization follows the Pareto (ABC) principle, allowing Category Managers to focus their efforts on the products that drive the majority of revenue impact.
 
-The SQL query aggregates and enriches data from multiple operational sources (products, margins, sales, inventory, suppliers) and is **directly integrated with Google Sheets** to generate an **automated, always-up-to-date report**.
+The underlying SQL query aggregates and enriches data from multiple operational domains — products, suppliers, margins, sales history, and inventory — and is directly connected to Google Sheets to generate an always-up-to-date report. All calculations are executed in SQL, ensuring that the Google Sheets layer remains fast, lightweight, and responsive, even with large assortments.
 
-The goal is to give Category Managers **one central place** to:
-- Set priorities
-- Identify optimization opportunities
-- Monitor performance across the full assortment
+This reporting framework has been implemented in two different companies, where it became the cornerstone for daily performance measurement within Category Management teams. The logic has been tested, refined, and validated in real business environments, supporting thousands of SKUs and evolving alongside operational needs.
+
+Thanks to its SQL-first design, the report:
+-Handles thousands of SKUs efficiently
+-Supports live data refreshes configurable directly in Google Sheets (frequency and timing)
+-Allows for easy extension with additional KPIs (e.g. returns, funnel metrics, delivery performance, forecasting inputs) without changing the reporting layer
+
+The goal of this project is to give Category Managers one central place to:
+-Set priorities based on data-driven impact
+-Identify optimization opportunities across assortment, pricing, and stock
+-Monitor performance consistently across the full catalog
 
 ---
 
