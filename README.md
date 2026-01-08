@@ -50,17 +50,16 @@ All data is unified at **SKU level**.
 ---
 
 ## Data Flow Diagram
-<img width="1536" height="1024" alt="Dataflow_diagram" src="https://github.com/user-attachments/assets/a7b9c743-40ce-406e-9d5c-55c19c8bc1a8" />
+
+<img width="998" height="614" alt="image" src="https://github.com/user-attachments/assets/e599e77f-0036-4eac-b651-90ae83945c77" />
+
 This pipeline transforms raw operational data into a single, analytics-ready dataset for SKU-level performance analysis.
 
 Data flows through four logical layers:
 
 - Raw Layer: Read-only source data stored in BigQuery with no business logic applied.
-
 - Semantic Layer: Enriched and aggregated datasets that add business meaning and create reusable foundations.
-
 - Analytical Layer: Centralized KPI calculations and prioritization logic to ensure consistency across reporting.
-
 - Final Output: A consolidated dataset optimized for BI tools, serving as a single source of truth for decision-making.
 
 The layered design ensures scalability, clarity, and maintainability of the analytical logic.
